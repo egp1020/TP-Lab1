@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Medallas - Juegos Olímpicos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Registro de Medallas - Juegos Olímpicos</h1>
+
+    <form id="medalForm" class="mt-4">
+        <div class="form-group">
+            <label for="country">País:</label>
+            <input type="text" class="form-control" id="country" placeholder="Ingrese el país" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="gold">Medallas de Oro:</label>
+                <input type="number" class="form-control" id="gold" min="0" value="0" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="silver">Medallas de Plata:</label>
+                <input type="number" class="form-control" id="silver" min="0" value="0" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="bronze">Medallas de Bronce:</label>
+                <input type="number" class="form-control" id="bronze" min="0" value="0" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Agregar Medallas</button>
+    </form>
+
+    <table class="table table-striped mt-5">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">País</th>
+                <th scope="col">Oro</th>
+                <th scope="col">Plata</th>
+                <th scope="col">Bronce</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody id="medalTableBody">
+            <!-- Las filas se agregarán aquí dinámicamente -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById("medalForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const country = document.getElementById("country").value;
+        const gold = parseInt(document.getElementById("gold").value);
+        const silver = parseInt(document.getElementById("silver").value);
+        const bronze = parseInt(document.getElementById("bronze").value);
+        const total = gold + silver + bronze;
+
+        const tableBody = document.getElementById("medalTableBody");
+        const newRow = tableBody.insertRow();
+
+        newRow.innerHTML = `
+            <tr>
+                <td>${country}</td>
+                <td>${gold}</td>
+                <td>${silver}</td>
+                <td>${bronze}</td>
+                <td>${total}</td>
+            </tr>
+        `;
+
+        // Limpiar formulario
+        document.getElementById("medalForm").reset();
+    });
+</script>
+
+</body>
+</html>
