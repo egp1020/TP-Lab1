@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Medallas - Juegos Olímpicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Registro de Medallas - Juegos Olímpicos</h1>
+
+    <form id="medalForm">
+        <label for="country">País:</label>
+        <input type="text" id="country" required>
+
+        <label for="gold">Medallas de Oro:</label>
+        <input type="number" id="gold" min="0" required>
+
+        <label for="silver">Medallas de Plata:</label>
+        <input type="number" id="silver" min="0" required>
+
+        <label for="bronze">Medallas de Bronce:</label>
+        <input type="number" id="bronze" min="0" required>
+
+        <input type="submit" value="Agregar Medallas">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Oro</th>
+                <th>Plata</th>
+                <th>Bronce</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="medalTableBody">
+        </tbody>
+    </table>
+
+    <script src="scripts/main.js"></script> <!-- Importar archivo JS -->
+
+</body>
+</html>
