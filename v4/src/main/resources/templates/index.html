@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Medallas - Juegos Olímpicos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Registro de Medallas - Juegos Olímpicos</h1>
+
+    <form method="post" action="/add" class="mt-4">
+        <div class="form-group">
+            <label for="country">País:</label>
+            <input type="text" class="form-control" id="country" name="country" placeholder="Ingrese el país" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="gold">Medallas de Oro:</label>
+                <input type="number" class="form-control" id="gold" name="gold" min="0" value="0" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="silver">Medallas de Plata:</label>
+                <input type="number" class="form-control" id="silver" name="silver" min="0" value="0" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="bronze">Medallas de Bronce:</label>
+                <input type="number" class="form-control" id="bronze" name="bronze" min="0" value="0" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Agregar Medallas</button>
+    </form>
+
+    <table class="table table-striped mt-5">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">País</th>
+                <th scope="col">Oro</th>
+                <th scope="col">Plata</th>
+                <th scope="col">Bronce</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="medal : ${medals}">
+                <td th:text="${medal.country}"></td>
+                <td th:text="${medal.gold}"></td>
+                <td th:text="${medal.silver}"></td>
+                <td th:text="${medal.bronze}"></td>
+                <td th:text="${medal.total}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
